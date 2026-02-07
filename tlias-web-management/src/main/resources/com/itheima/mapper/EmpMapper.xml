@@ -8,6 +8,13 @@
             values (#{username},#{name},#{gender},#{phone},#{job},#{salary},#{image},#{entryDate},#{deptId},#{createTime},#{updateTime})
     </insert>
 
+    <delete id="deleteByIds">
+        delete from emp where id in
+        <foreach collection="ids" item="id" separator="," open="(" close=")">
+            #{id}
+        </foreach>
+    </delete>
+
     <select id="list" resultType="com.itheima.pojo.Emp">
         select e.*, d.name from emp e left join dept d on e.dept_id = d.id
         <where>
