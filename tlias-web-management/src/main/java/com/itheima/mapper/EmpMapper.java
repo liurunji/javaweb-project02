@@ -37,6 +37,18 @@ public interface EmpMapper {
     //@Options(useGeneratedKeys = true,keyProperty = "id",keyColumn = "id")  //获取到生成的主键  主键返回  ，这方法被调用后会返回给emp中的id
     void insert(Emp emp);
 
-
+    /*
+    根据ID（批量）删除
+     */
     void deleteByIds(List<Integer> ids);
+
+    /*
+    根据ID查询对应员工信息
+     */
+    Emp getInfoById(Integer id);
+
+    /*
+    根据员工id更新员工信息
+     */
+    void updateById(Emp emp);
 }
