@@ -141,4 +141,13 @@ public class EmpServiceImpl implements EmpService {
             empExprMapper.insertBatch(exprList);
         }
     }
+
+    /*
+    查询所有员工信息
+     */
+    @Override
+    public List<Emp> getEmpList() {
+        List<Emp> list = empMapper.findMasterEmp();
+        return list;
+    }
 }

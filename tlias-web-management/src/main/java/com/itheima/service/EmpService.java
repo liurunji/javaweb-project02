@@ -18,4 +18,9 @@ public interface EmpService {
     Emp getInfo(Integer id);
 
     void update(Emp emp);
+
+    /*
+    获取全部员工
+     */
+    List<Emp> getEmpList();
 }

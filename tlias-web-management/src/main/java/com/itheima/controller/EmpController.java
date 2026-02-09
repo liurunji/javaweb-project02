@@ -84,4 +84,15 @@ public class EmpController {
         return Result.success();
     }
 
+    /*
+    查询全部班主任员工，主要用于班级管理模块添加班级信息设置班主任
+     */
+    @GetMapping("/list")
+    public Result EmpList(){
+        log.info("查询所有班主任列表");
+        List<Emp> list = empService.getEmpList();
+        return Result.success(list);
+    }
+
+
 }

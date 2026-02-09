@@ -51,4 +51,9 @@ public interface EmpMapper {
     根据员工id更新员工信息
      */
     void updateById(Emp emp);
+
+    /*
+    查询所有班主任
+     */
+    List<Emp> findMasterEmp();
 }
