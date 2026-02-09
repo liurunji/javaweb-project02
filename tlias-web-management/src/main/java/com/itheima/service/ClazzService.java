@@ -6,4 +6,8 @@ import com.itheima.pojo.PageResult;
 
 public interface ClazzService {
     PageResult<Clazz> page(ClazzQueryParam clazzQueryParam);
+
+    void insert(Clazz clazz);
+
+    Clazz selectById(Integer id);
 }

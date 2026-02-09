@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.function.Consumer;
 
@@ -20,6 +21,9 @@ public class ClazzServiceImpl implements ClazzService {
     @Autowired
     private ClazzMapper clazzMapper;
 
+    /*
+    （带条件）分页查询所有班级信息
+     */
     @Override
     public PageResult<Clazz> page(ClazzQueryParam clazzQueryParam) {
         //1.设置分页参数
@@ -45,5 +49,25 @@ public class ClazzServiceImpl implements ClazzService {
         Page<Clazz> p = (Page<Clazz>) list;
         PageResult<Clazz> pageResult = new PageResult<>(p.getTotal(), p.getResult());
         return pageResult;
+    }
+
+    /*
+    新增班级信息
+     */
+    @Override
+    public void insert(Clazz clazz) {
+        //给创建时间和更新时间赋值
+        clazz.setCreateTime(LocalDateTime.now());
+        clazz.setUpdateTime(LocalDateTime.now());
+        //调用mapper方法
+        clazzMapper.insert(clazz);
+    }
+
+    /*
+    根据id查找班级信息
+     */
+    @Override
+    public Clazz selectById(Integer id) {
+        return clazzMapper.selectById(id);
     }
 }

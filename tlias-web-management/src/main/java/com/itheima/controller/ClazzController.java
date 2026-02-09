@@ -7,9 +7,7 @@ import com.itheima.pojo.Result;
 import com.itheima.service.ClazzService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @Slf4j
 @RestController
@@ -27,4 +25,25 @@ public class ClazzController {
         PageResult<Clazz> pageResult = clazzService.page(clazzQueryParam);
         return Result.success(pageResult);
     }
+
+    /*
+    新增班级信息
+     */
+    @PostMapping
+    public Result insert(@RequestBody Clazz clazz){
+        log.info("新增班级的信息：{}",clazz);
+        clazzService.insert(clazz);
+        return Result.success();
+    }
+
+    /*
+    根据id查询班级信息
+     */
+    @GetMapping("/{id}")
+    public Result getInfo(@PathVariable Integer id){
+        log.info("id:{}",id);
+        Clazz clazz = clazzService.selectById(id);
+        return Result.success(clazz);
+    }
+
 }
