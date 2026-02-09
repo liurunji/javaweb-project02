@@ -113,7 +113,7 @@
 
     <!--查询职位是班主任的所有员工-->
     <select id="findMasterEmp" resultType="com.itheima.pojo.Emp">
-        select * from emp where job = 1 order by update_time
+        select * from emp where job = 1
     </select>
 
 
