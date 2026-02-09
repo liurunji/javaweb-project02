@@ -70,4 +70,15 @@ public class ClazzServiceImpl implements ClazzService {
     public Clazz selectById(Integer id) {
         return clazzMapper.selectById(id);
     }
+
+    /*
+    修改班级信息（条件是id）
+     */
+    @Override
+    public void update(Clazz clazz) {
+        //将更新时间设置为当前时间
+        clazz.setUpdateTime(LocalDateTime.now());
+        //调用mapper方法
+        clazzMapper.update(clazz);
+    }
 }

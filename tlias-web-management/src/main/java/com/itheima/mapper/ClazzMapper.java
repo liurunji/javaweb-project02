@@ -22,4 +22,6 @@ public interface ClazzMapper {
     根据ID查询班级信息
      */
     Clazz selectById(Integer id);
+
+    void update(Clazz clazz);
 }
