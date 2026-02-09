@@ -121,7 +121,7 @@ public class EmpServiceImpl implements EmpService {
     public void update(Emp emp) {
         //将更新时间设置为当前时间
         emp.setUpdateTime(LocalDateTime.now());
-        System.out.println(emp);
+
         //调用mapper层 把员工基本信息进行修改
         empMapper.updateById(emp);
 
