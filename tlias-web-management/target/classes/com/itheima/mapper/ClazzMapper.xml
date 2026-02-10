@@ -35,6 +35,10 @@
         where id = #{id}
     </update>
 
+    <delete id="deleteById">
+        delete from clazz where id = #{id}
+    </delete>
+
     <select id="list" resultType="com.itheima.pojo.Clazz">
         select c.*,e.name master_name from clazz c left join emp e on c.master_id = e.id
         <where>
@@ -52,4 +56,15 @@
         select id,name,room,begin_date,end_date,master_id,subject,create_time,update_time from clazz
         where id = #{id}
     </select>
+
+    <select id="queryStuNumByClazzId" resultType="java.lang.Integer">
+        select count(*) num from clazz c right join student s on c.id = s.clazz_id
+        where c.id = #{id}
+    </select>
+
+    <select id="getClazzList" resultType="com.itheima.pojo.Clazz">
+        select id,name,room,begin_date,end_date,master_id,subject,create_time,update_time from clazz
+    </select>
+
+
 </mapper>

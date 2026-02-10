@@ -9,6 +9,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @Slf4j
 @RestController
 @RequestMapping("/clazzs")
@@ -64,6 +66,16 @@ public class ClazzController {
         log.info("id:{}",id);
         clazzService.deleteById(id);
         return Result.success();
+    }
+
+    /*
+    该接口用于查询所有班级信息：用在添加学生的时候有下拉框选择班级
+     */
+    @GetMapping("/list")
+    public Result list(){
+        log.info("查询所有班级信息：");
+        List<Clazz> list = clazzService.list();
+        return Result.success(list);
     }
 
 }

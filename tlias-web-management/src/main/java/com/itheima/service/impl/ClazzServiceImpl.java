@@ -101,4 +101,12 @@ public class ClazzServiceImpl implements ClazzService {
             throw new DeleteClazzFailedException();
         }
     }
+
+    /*
+    这个是查询所有班级信息，用于添加学生时选择班级
+     */
+    @Override
+    public List<Clazz> list() {
+        return clazzMapper.getClazzList();
+    }
 }
