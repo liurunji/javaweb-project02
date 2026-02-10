@@ -2,6 +2,7 @@ package com.itheima.service.impl;
 
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
+import com.itheima.exception.DeleteClazzFailedException;
 import com.itheima.mapper.ClazzMapper;
 import com.itheima.pojo.Clazz;
 import com.itheima.pojo.ClazzQueryParam;
@@ -39,7 +40,7 @@ public class ClazzServiceImpl implements ClazzService {
                 clazz.setStatus("未开班");
             } else if (now.isAfter(endDate)) {
                 clazz.setStatus("已结课");
-            }else {
+            } else {
                 clazz.setStatus("在读中");
             }
         });
@@ -80,5 +81,24 @@ public class ClazzServiceImpl implements ClazzService {
         clazz.setUpdateTime(LocalDateTime.now());
         //调用mapper方法
         clazzMapper.update(clazz);
+    }
+
+    /*
+    根据班级id删除班级信息
+     */
+    @Override
+    public void deleteById(Integer id) {
+        /*
+        思路：先调用mapper查询此班级下是否有学生存在，如果存在抛出异常进行处理
+        若无学生，则直接删除
+         */
+        Integer num = clazzMapper.queryStuNumByClazzId(id);
+        if (num == 0){
+            //没有学生调用mapper方法删除班级
+            clazzMapper.deleteById(id);
+        }else {
+            //有学生，抛出异常
+            throw new DeleteClazzFailedException();
+        }
     }
 }

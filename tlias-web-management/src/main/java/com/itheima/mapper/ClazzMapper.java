@@ -23,5 +23,18 @@ public interface ClazzMapper {
      */
     Clazz selectById(Integer id);
 
+    /*
+    根据id更新班级信息
+     */
     void update(Clazz clazz);
+
+    /*
+    通过班级id查询对应的班级学生人数
+     */
+    Integer queryStuNumByClazzId(Integer id);
+
+    /*
+    根据id删除班级信息
+     */
+    void deleteById(Integer id);
 }

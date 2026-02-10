@@ -56,4 +56,14 @@ public class ClazzController {
         return Result.success();
     }
 
+    /*
+    根据id删除班级信息
+     */
+    @DeleteMapping("/{id}")
+    public Result delete(@PathVariable Integer id){
+        log.info("id:{}",id);
+        clazzService.deleteById(id);
+        return Result.success();
+    }
+
 }
