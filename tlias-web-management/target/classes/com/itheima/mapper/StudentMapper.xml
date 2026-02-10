@@ -29,7 +29,7 @@
         where id = #{id}
     </update>
 
-    <!--违纪处理一次，需要将违纪次数+1，违纪扣分+前端输入的分数。-->
+    <!--违纪处理一次，需要将违纪次数+1，违纪扣分+前端输入的分数。  注意也要更新最后更新时间字段-->
     <update id="updateViolation">
         update student
         set violation_count = violation_count + 1,

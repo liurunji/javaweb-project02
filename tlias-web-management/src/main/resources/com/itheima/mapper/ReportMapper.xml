@@ -29,4 +29,23 @@
         from emp
         GROUP BY gender
     </select>
+
+     <!--统计班级人数-->
+    <select id="getStudentCountData" resultType="java.util.Map">
+        select c.name clazzName,count(*) num from student s left join clazz c on s.clazz_id = c.id
+        group by s.clazz_id
+    </select>
+
+    <!--统计学生学历信息-->
+    <select id="getStudentDegreeData" resultType="java.util.Map">
+        select case
+                   when degree = 1 then '初中'
+                   when degree = 2 then '高中'
+                   when degree = 3 then '大专'
+                   when degree = 4 then '本科'
+                   when degree = 5 then '硕士'
+                   when degree = 6 then '博士'
+            end name
+             ,count(*) value from student group by degree
+    </select>
 </mapper>

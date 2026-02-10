@@ -13,4 +13,9 @@ public interface ReportMapper {
 
     @MapKey("gender")
     List<Map<String, Object>> getEmpGenderData();
+
+    @MapKey("clazzName")
+    List<Map<String, Object>> getStudentCountData();
+
+    List<Map<String, Object>> getStudentDegreeData();
 }
