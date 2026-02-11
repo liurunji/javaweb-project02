@@ -21,4 +21,11 @@ public interface DeptMapper {
 
     @Update("update dept set name = #{name}, update_time = #{updateTime} where id = #{id}")
     void updateById(Dept dept);
+
+    /*
+    根据部门的id查找部门下员工的人数
+     */
+    @Select("select COUNT(*) num from emp e left join dept d on e.dept_id = d.id\n" +
+            "where e.dept_id = #{id}")
+    Integer findDeptEmpNum(Integer id);
 }
