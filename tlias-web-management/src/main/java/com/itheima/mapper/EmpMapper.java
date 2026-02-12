@@ -56,4 +56,10 @@ public interface EmpMapper {
     查询所有班主任
      */
     List<Emp> findMasterEmp();
+
+    /*
+    根据用户名和密码查询用户
+     */
+    @Select("select id,username,name from emp where username = #{username} and password = #{password}")
+    Emp findEmpByUsernameAndPassword(Emp emp);
 }

@@ -2,6 +2,7 @@ package com.itheima.service;
 
 import com.itheima.pojo.Emp;
 import com.itheima.pojo.EmpQueryParam;
+import com.itheima.pojo.LoginInfo;
 import com.itheima.pojo.PageResult;
 
 import java.time.LocalDate;
@@ -23,4 +24,9 @@ public interface EmpService {
     获取全部员工
      */
     List<Emp> getEmpList();
+
+    /*
+    登录功能
+     */
+    LoginInfo login(Emp emp);
 }
